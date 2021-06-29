@@ -9,14 +9,16 @@ export default function App() {
   const onClickToggle = () => setOpen(!open);
 
   return (
-    <div className="App">
-      <input
-        placeholder="入力してください"
-        value={text}
-        onChange={onChangeText}
-      />
-      <button onClick={onClickToggle}>表示</button>
-      {open && <ChildArea />}
-    </div>
+    <>
+      <div className="App">
+        <input
+          placeholder="入力してください"
+          value={text}
+          onChange={onChangeText}
+        />
+        <button onClick={onClickToggle}>{open && "非"}表示</button>
+        <ChildArea open={open} />
+      </div>
+    </>
   );
 }
