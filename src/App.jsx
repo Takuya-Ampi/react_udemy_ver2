@@ -38,9 +38,7 @@ export default function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route path="/page1">
-            <Page1 />
-          </Route>
+          <Route path="/page1" render={() => <Page1 />} />
           <Route path="/page2">
             <Page2 />
           </Route>
