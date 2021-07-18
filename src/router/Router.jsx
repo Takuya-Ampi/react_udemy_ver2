@@ -1,8 +1,6 @@
 import { Switch, Route } from "react-router-dom";
 import { Home } from "../Home";
-import { Page1 } from "../Page1";
-import { Page1DetailA } from "../Page1DetailA";
-import { Page1DetailB } from "../page1DetailB";
+import { Page1Routes } from "./Page1Routes";
 import { Page2 } from "../Page2";
 
 export const Router = () => {
@@ -17,7 +15,18 @@ export const Router = () => {
           { match: { url } } // propsの中にmatchオブジェクトがある
         ) => (
           <Switch>
-            <Route exact path={url}>
+            {Page1Routes.map((route) => {
+              return (
+                <Route
+                  key={route.path}
+                  path={`${url}${route.path}`}
+                  exact={route.exact}
+                >
+                  {route.child}
+                </Route>
+              );
+            })}
+            {/* <Route exact path={url}>
               <Page1 />
             </Route>
             <Route path={`${url}/detailA`}>
@@ -25,7 +34,7 @@ export const Router = () => {
             </Route>
             <Route path={`${url}/detailB`}>
               <Page1DetailB />
-            </Route>
+            </Route> */}
           </Switch>
         )}
       />
